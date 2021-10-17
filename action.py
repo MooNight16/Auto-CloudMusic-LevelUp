@@ -310,7 +310,8 @@ def run_task(info, phone, password):
         print(30 * "=")
         # Server 酱推送
         if info["sc_key"]:
-            handle_error(server_chan_push(info["sc_key"][0],res_print), "Server酱", info["sc_key"][0], res_print)
+            handle_error(server_chan_push, "Server酱", info["sc_key"][0], res_print)
+            server_chan_push(info["sc_key"][0],res_print)
         # Bark 推送
         if info["bark_key"]:
             handle_error(bark_push, "Bark", info["bark_key"][0], 1, res_print)
