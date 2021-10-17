@@ -301,7 +301,7 @@ def run_task(info, phone, password):
     app = CloudMusic(phone, password)
     # Login
     res_login = app.login()
-    if "400" not in res_login:
+    try:
         # Sign In
         res_sign = app.sign()
         # Music Task
@@ -328,6 +328,9 @@ def run_task(info, phone, password):
             handle_error(
                 wecom_id_push, "Wecom", info["wecom_key"][0], info["wecom_key"][1], info["wecom_key"][2], res_print
             )
+     except Exception as e:
+        print('出问题了：', str(e))
+        return str(e)
     else:
         print(res_login)
     print(30 * "=")
