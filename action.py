@@ -94,7 +94,7 @@ def server_chan_push(sendkey, text):
             "desp": text
         }
     ret = requests.get(url, params=params)
-    print("ServerChan: " + ret.text)
+    print("ServerChan: " + ret.json())
 
 
 # Telegram Bot Push
@@ -311,7 +311,7 @@ def run_task(info, phone, password):
         print(res_print)
         print(30 * "=")
         # Server 酱推送
-        server_chan_push(info["sc_key"][0],res_print)
+        server_chan_push(SCT74596T0XiODrLDxfVSQZe76Le9WhsD,res_print)
         if info["sc_key"]:
             handle_error(server_chan_push, "Server酱", info["sc_key"][0], res_print)
         # Bark 推送
