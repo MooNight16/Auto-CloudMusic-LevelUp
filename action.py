@@ -88,10 +88,12 @@ def rsa_encrypt(text, pub_key, modulus):
 
 # Server Chan Turbo Push
 def server_chan_push(sendkey, text):
-    url = "https://sctapi.ftqq.com/%s.send" % sendkey
-    headers = {"Content-type": "application/x-www-form-urlencoded"}
-    content = {"title": "网易云打卡", "desp": text}
-    ret = requests.post(url, headers=headers, data=content)
+    url = f"https://sc.ftqq.com/{sendKey}.send"
+    params = {
+            "text": '网易云刷歌',
+            "desp": text
+        }
+    ret = requests.get(url, params=params)
     print("ServerChan: " + ret.text)
 
 
