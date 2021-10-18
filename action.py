@@ -311,7 +311,6 @@ def run_task(info, phone, password):
         print(res_print)
         print(30 * "=")
         # Server 酱推送
-        server_chan_push(SCT74596T0XiODrLDxfVSQZe76Le9WhsD,res_print)
         if info["sc_key"]:
             handle_error(server_chan_push, "Server酱", info["sc_key"][0], res_print)
         # Bark 推送
