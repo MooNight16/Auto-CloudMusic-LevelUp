@@ -88,13 +88,11 @@ def rsa_encrypt(text, pub_key, modulus):
 
 # Server Chan Turbo Push
 def server_chan_push(sendkey, text):
-    url = f"https://sc.ftqq.com/{sendKey}.send"
-    params = {
-            "text": '网易云刷歌',
-            "desp": text
-        }
-    ret = requests.get(url, params=params)
-    print("ServerChan: " + ret.json())
+    url = "https://sctapi.ftqq.com/%s.send" % sendkey
+    headers = {"Content-type": "application/x-www-form-urlencoded"}
+    content = {"title": "网易云打卡", "desp": text}
+    ret = requests.post(url, headers=headers, data=content)
+    print("ServerChan: " + ret.text)
 
 
 # Telegram Bot Push
@@ -301,7 +299,7 @@ def run_task(info, phone, password):
     app = CloudMusic(phone, password)
     # Login
     res_login = app.login()
-    try:
+    if "400" not in res_login:
         # Sign In
         res_sign = app.sign()
         # Music Task
@@ -327,9 +325,6 @@ def run_task(info, phone, password):
             handle_error(
                 wecom_id_push, "Wecom", info["wecom_key"][0], info["wecom_key"][1], info["wecom_key"][2], res_print
             )
-     except Exception as e:
-        print('出问题了：', str(e))
-        return str(e)
     else:
         print(res_login)
     print(30 * "=")
