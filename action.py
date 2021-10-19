@@ -299,6 +299,7 @@ def run_task(info, phone, password):
     app = CloudMusic(phone, password)
     # Login
     res_login = app.login()
+    print("输出：：：：："+res_login)
     if "400" not in res_login:
         # Sign In
         res_sign = app.sign()
