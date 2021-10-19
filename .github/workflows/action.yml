@@ -5,7 +5,7 @@ name: 网易云签到刷歌
 
 on:
   schedule:
-    - cron: "0 6,18 * * *"
+    - cron: "0 22,10 * * *"
   workflow_dispatch:
 
 jobs:
